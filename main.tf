@@ -97,6 +97,8 @@ data "aws_ami" "amazon_linux" {
 }
 
 resource "aws_instance" "app_a" {
+  depends_on = [module.vpc]
+
   ami           = data.aws_ami.amazon_linux.id
   instance_type = var.instance_type
 
@@ -120,6 +122,8 @@ resource "aws_instance" "app_a" {
 }
 
 resource "aws_instance" "app_b" {
+  depends_on = [module.vpc]
+
   ami           = data.aws_ami.amazon_linux.id
   instance_type = var.instance_type
 
